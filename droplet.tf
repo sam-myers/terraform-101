@@ -1,4 +1,4 @@
-resource "digitalocean_droplet" "demo_droplet" {
+resource "digitalocean_droplet" "demo" {
   image = "ubuntu-18-04-x64"
   name = "demo"
   region = "${var.do_region}"
@@ -7,7 +7,7 @@ resource "digitalocean_droplet" "demo_droplet" {
   volume_ids = ["${digitalocean_volume.demo_disk.*.id}"]
 
   connection {
-    host = "${digitalocean_droplet.demo_droplet.ipv4_address}"
+    host = "${digitalocean_droplet.demo.ipv4_address}"
     type = "ssh"
     user = "root"
     private_key = "${data.template_file.private_key.rendered}"
