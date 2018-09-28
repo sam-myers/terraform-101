@@ -4,9 +4,9 @@ resource "digitalocean_ssh_key" "demo_key" {
 }
 
 data "template_file" "public_key" {
-  template = "${file("/Users/sam/.ssh/id_rsa.pub")}"
+  template = "${file("${var.ssh_key_path}.pub")}"
 }
 
 data "template_file" "private_key" {
-  template = "${file("/Users/sam/.ssh/id_rsa")}"
+  template = "${file("${var.ssh_key_path}")}"
 }

@@ -1,3 +1,8 @@
+variable "ssh_key_path" {
+  description = "Path to SSH private key"
+  default = "/Users/sam/.ssh/id_rsa"
+}
+
 variable "do_token" {
   description = "Digital Ocean API token"
   type = "string"
