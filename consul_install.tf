@@ -1,12 +1,13 @@
 resource "null_resource" "install_consul" {
   triggers {
+    droplet_id = "${digitalocean_droplet.demo.id}"
     install_script = "${data.template_file.consul_install_script.rendered}"
     systemctl_service = "${data.template_file.consul_service.rendered}"
     config_file = "${data.template_file.consul_config.rendered}"
   }
 
   connection {
-    host = "${digitalocean_droplet.demo_droplet.ipv4_address}"
+    host = "${digitalocean_droplet.demo.ipv4_address}"
     type = "ssh"
     user = "root"
     private_key = "${data.template_file.private_key.rendered}"
